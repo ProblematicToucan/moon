@@ -20,13 +20,15 @@ abstract class Table extends Component
 
     abstract public function query(): Builder;
     abstract public function columns(): array;
+    abstract public function actions(): array;
     abstract protected function layout(): string;
     abstract protected function searchableColumns(): array;
 
     public function render(): View
     {
         return view($this->layout(), [
-            'table' => $this->renderTable()
+            'table' => $this->renderTable(),
+            'model' => $this->getModel()
         ]);
     }
 

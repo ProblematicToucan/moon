@@ -24,6 +24,8 @@ Route::middleware(['auth'])->group(function () {
     Route::redirect('admin', 'admin/user')->name('admin');
     Route::prefix('admin')->group(function () {
         Route::get('user', \App\Livewire\Admin\Users\UserList::class)->name('admin.user.index');
+
+        Route::get('exchange', \App\Livewire\Admin\Exchanges\ExchangeList::class)->name('admin.exchange.index');
     });
 });
 

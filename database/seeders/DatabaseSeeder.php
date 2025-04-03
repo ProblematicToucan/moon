@@ -19,5 +19,9 @@ class DatabaseSeeder extends Seeder
             'name' => 'Gamal Aziz',
             'email' => 'admin@garamm.dev',
         ]);
+
+        $this->call([
+            ExchangeSeeder::class
+        ]);
     }
 }

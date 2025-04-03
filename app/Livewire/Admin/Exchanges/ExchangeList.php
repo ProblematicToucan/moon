@@ -1,27 +1,29 @@
 <?php
 
-namespace App\Livewire\Admin\Users;
+namespace App\Livewire\Admin\Exchanges;
 
 use App\Livewire\Components\Table;
 use Livewire\Component;
 
-class UserList extends Table
+class ExchangeList extends Table
 {
-    protected string $model = \App\Models\User::class;
+    protected string $model = \App\Models\Exchange::class;
     public function layout(): string
     {
-        return 'livewire.admin.users.user-list';
+        return 'livewire.admin.exchanges.exchange-list';
     }
-    public function query(): \Illuminate\Database\Eloquent\Builder
+
+    public function query(): \Illuminate\Contracts\Database\Eloquent\Builder
     {
         return $this->getModel()::query();
     }
+
     public function columns(): array
     {
         return [
             \App\Table\TextColumn::make('name', 'Name')->sortable(),
-            \App\Table\TextColumn::make('email', 'Email')->sortable(),
-            \App\Table\TextColumn::make('created_at', 'Created At')->date()->sortable(),
+            \App\Table\TextColumn::make('is_active', 'Active')->badge(),
+            \App\Table\TextColumn::make('created_at', 'Created At')->date(),
         ];
     }
     public function actions(): array
@@ -41,6 +43,6 @@ class UserList extends Table
     }
     public function searchableColumns(): array
     {
-        return ['name', 'email'];
+        return ['name'];
     }
 }

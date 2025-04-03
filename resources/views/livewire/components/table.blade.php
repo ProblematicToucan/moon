@@ -1,6 +1,6 @@
 <div class="border p-4 rounded-2xl border-zinc-800/5 dark:border-white/10 space-y-4">
-    <div class="flex items-center justify-between">
-        <div>
+    <div class="flex items-center justify-between gap-2">
+        <div class="w-full">
             <flux:input wire:model.live.debounce.500ms="search" size="sm" icon="magnifying-glass"
                 placeholder="Search" />
         </div>
