@@ -19,9 +19,9 @@ class UserList extends Table
     public function columns(): array
     {
         return [
-            \App\Table\TextColumn::make('name', 'Name')->sortable(),
-            \App\Table\TextColumn::make('email', 'Email')->sortable(),
-            \App\Table\TextColumn::make('created_at', 'Created At')->date()->sortable(),
+            \App\Tables\Columns\TextColumn::make('name', 'Name')->sortable(),
+            \App\Tables\Columns\TextColumn::make('email', 'Email')->sortable(),
+            \App\Tables\Columns\TextColumn::make('created_at', 'Created At')->date()->sortable(),
         ];
     }
     public function actions(): array

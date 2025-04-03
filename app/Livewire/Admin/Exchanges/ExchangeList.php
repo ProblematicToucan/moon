@@ -21,9 +21,9 @@ class ExchangeList extends Table
     public function columns(): array
     {
         return [
-            \App\Table\TextColumn::make('name', 'Name')->sortable(),
-            \App\Table\TextColumn::make('is_active', 'Active')->badge(),
-            \App\Table\TextColumn::make('created_at', 'Created At')->date(),
+            \App\Tables\Columns\TextColumn::make('name', 'Name')->sortable(),
+            \App\Tables\Columns\TextColumn::make('is_active', 'Active')->badge(),
+            \App\Tables\Columns\TextColumn::make('created_at', 'Created At')->date(),
         ];
     }
     public function actions(): array

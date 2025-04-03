@@ -26,6 +26,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('user', \App\Livewire\Admin\Users\UserList::class)->name('admin.user.index');
 
         Route::get('exchange', \App\Livewire\Admin\Exchanges\ExchangeList::class)->name('admin.exchange.index');
+        Route::get('exchange/create', \App\Livewire\Admin\Exchanges\ExchangeCreate::class)->name('admin.exchange.create');
     });
 });
 
