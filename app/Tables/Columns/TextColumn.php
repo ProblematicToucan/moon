@@ -14,9 +14,9 @@ class TextColumn
         $this->label = $label;
     }
 
-    public static function make(string $key, string $label): self
+    public static function make(string $key, string $label): static
     {
-        return new self($key, $label);
+        return new static($key, $label);
     }
 
     public function getKey(): string
