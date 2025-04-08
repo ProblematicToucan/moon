@@ -1,3 +1,4 @@
+@props(['navlist', 'heading', 'subheading', 'model' => null, 'maxWidth', 'slot'])
 <div class="flex items-start max-md:flex-col">
     <div class="mr-10 w-full pb-4 md:w-[220px]">
         <flux:navlist>
