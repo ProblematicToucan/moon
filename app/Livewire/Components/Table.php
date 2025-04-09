@@ -13,7 +13,7 @@ abstract class Table extends Component
 {
     use WithPagination;
     protected int $perPage = 10;
-    protected string $model;
+    public string $model;
     public string $sortBy = '';
     public string $sortDirection = 'asc';
     public string $search = '';
@@ -21,25 +21,16 @@ abstract class Table extends Component
     abstract public function query(): Builder;
     abstract public function columns(): array;
     abstract public function actions(): array;
-    abstract protected function layout(): string;
     abstract protected function searchableColumns(): array;
 
     public function render(): View
-    {
-        return view($this->layout(), [
-            'table' => $this->renderTable(),
-            'model' => $this->getModel()
-        ]);
-    }
-
-    private function renderTable(): string
     {
         return view('livewire.components.table', [
             'columns' => $this->columns(),
             'data' => $this->data(),
             'sortBy' => $this->sortBy,
             'sortDirection' => $this->sortDirection
-        ])->render();
+        ]);
     }
 
     public function data(): LengthAwarePaginator
