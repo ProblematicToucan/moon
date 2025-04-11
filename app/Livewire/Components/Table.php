@@ -6,6 +6,7 @@ use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Model;
+use Livewire\Attributes\Locked;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -13,16 +14,15 @@ abstract class Table extends Component
 {
     use WithPagination;
     protected int $perPage = 10;
+    #[Locked]
     public string $model;
     public string $sortBy = '';
     public string $sortDirection = 'asc';
     public string $search = '';
-
-    abstract public function query(): Builder;
-    abstract public function columns(): array;
-    abstract public function actions(): array;
+    abstract protected function query(): Builder;
+    abstract protected function columns(): array;
+    abstract protected function actions(): array;
     abstract protected function searchableColumns(): array;
-
     public function render(): View
     {
         return view('livewire.components.table', [
@@ -58,6 +58,11 @@ abstract class Table extends Component
     public function setPerPage(int $perPage): void
     {
         $this->perPage = $perPage;
+    }
+
+    public function getSearchableColumns(): array
+    {
+        return $this->searchableColumns();
     }
 
     public function sort($key)

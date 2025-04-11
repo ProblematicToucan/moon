@@ -5,9 +5,7 @@ use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::view('/', 'welcome')->name('home');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -23,7 +21,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::redirect('admin', 'admin/user')->name('admin');
     Route::prefix('admin')->group(function () {
+        Route::view('user', 'components.admin.user.user-list')->name('admin.user.index');
 
+        Route::get('exchange', fn() => view('components.admin.user.user-list'))->name('admin.exchange.index');
     });
 });
 
