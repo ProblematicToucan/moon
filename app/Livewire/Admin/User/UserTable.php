@@ -8,12 +8,12 @@ use Livewire\Component;
 
 class UserTable extends Table
 {
-    public function query(): \Illuminate\Contracts\Database\Eloquent\Builder
+    protected function query(): \Illuminate\Contracts\Database\Eloquent\Builder
     {
         return $this->getModel()::query();
     }
 
-    public function columns(): array
+    protected function columns(): array
     {
         return [
             \App\Tables\Columns\TextColumn::make('name', 'Name')->sortable(),
@@ -22,12 +22,12 @@ class UserTable extends Table
         ];
     }
 
-    public function searchableColumns(): array
+    protected function searchableColumns(): array
     {
         return ['name', 'email'];
     }
 
-    public function actions(): array
+    protected function actions(): array
     {
         return [];
     }
