@@ -11,7 +11,7 @@ it('renders successfully', function () {
 it('has valid route', function () {
     $this->actingAs(\App\Models\User::factory()->create());
 
-    $this->get('/admin/user')->assertOk();
+    $this->get('/admin/user')->assertOk()->assertSeeLivewire(UserTable::class);
 });
 
 it('returns correct searchable columns', function () {
@@ -26,6 +26,6 @@ it('has actions', function () {
     /** @var UserTable $instance */
     $instance = Livewire::test(UserTable::class, ['model' => \App\Models\User::class])->instance();
 
-    $actions = $instance->actions();
+    $actions = $instance->getActions();
     expect($actions)->toBeArray();
 });

@@ -23,7 +23,7 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::view('user', 'components.admin.user.user-list')->name('admin.user.index');
 
-        Route::get('exchange', fn() => view('components.admin.user.user-list'))->name('admin.exchange.index');
+        Route::view('exchange', 'components.admin.exchange.exchange-list')->name('admin.exchange.index');
     });
 });
 

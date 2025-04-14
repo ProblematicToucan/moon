@@ -65,6 +65,11 @@ abstract class Table extends Component
         return $this->searchableColumns();
     }
 
+    public function getActions(): array
+    {
+        return $this->actions();
+    }
+
     public function sort($key)
     {
         $this->resetPage();
