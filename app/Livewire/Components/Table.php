@@ -13,6 +13,7 @@ use Livewire\WithPagination;
 abstract class Table extends Component
 {
     use WithPagination;
+    protected string $layout = 'components.layouts.app';
     protected int $perPage = 10;
     #[Locked]
     public string $model;
@@ -30,7 +31,7 @@ abstract class Table extends Component
             'data' => $this->data(),
             'sortBy' => $this->sortBy,
             'sortDirection' => $this->sortDirection
-        ]);
+        ])->layout($this->layout, ['model' => $this->getModel()]);
     }
 
     public function data(): LengthAwarePaginator

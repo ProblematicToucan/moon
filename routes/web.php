@@ -1,5 +1,7 @@
 <?php
 
+use App\Livewire\Admin\Exchange\ExchangeTable;
+use App\Livewire\Admin\User\UserTable;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
@@ -21,9 +23,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::redirect('admin', 'admin/user')->name('admin');
     Route::prefix('admin')->group(function () {
-        Route::view('user', 'components.admin.user.user-list')->name('admin.user.index');
+        Route::get('user', UserTable::class)->name('admin.user.index');
 
-        Route::view('exchange', 'components.admin.exchange.exchange-list')->name('admin.exchange.index');
+        Route::get('exchange', ExchangeTable::class)->name('admin.exchange.index');
+        Route::view('exchange/create', 'components.admin.exchange.exchange-create')->name('admin.exchange.create');
     });
 });
 

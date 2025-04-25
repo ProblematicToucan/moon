@@ -3,11 +3,12 @@
 namespace App\Livewire\Admin\User;
 
 use App\Livewire\Components\Table;
-use Illuminate\Database\Eloquent\Model;
-use Livewire\Component;
+use App\Models\User;
 
 class UserTable extends Table
 {
+    protected string $layout = 'components.admin.exchange.exchange-list';
+    public string $model = User::class;
     protected function query(): \Illuminate\Contracts\Database\Eloquent\Builder
     {
         return $this->getModel()::query();
