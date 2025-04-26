@@ -6,6 +6,9 @@ use App\Livewire\Components\Form;
 
 class ExchangeCreate extends Form
 {
+    protected string $layout = 'components.admin.exchange.exchange';
+    protected string $heading = 'Exchange';
+    protected string $subheading = 'Create exchange application resources';
     public string $name = '';
     public string $logo = '';
     public string $api_url = '';

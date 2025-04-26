@@ -7,7 +7,9 @@ use App\Models\Exchange;
 
 class ExchangeTable extends Table
 {
-    protected string $layout = 'components.admin.exchange.exchange-list';
+    protected string $layout = 'components.admin.exchange.exchange';
+    protected string $heading = 'Exchange';
+    protected string $subheading = 'Manage exchange application resources';
     public string $model = Exchange::class;
     protected function query(): \Illuminate\Contracts\Database\Eloquent\Builder
     {
@@ -30,5 +32,12 @@ class ExchangeTable extends Table
     protected function actions(): array
     {
         return [];
+    }
+
+    protected function pages(): array
+    {
+        return [
+            'create' => 'admin.exchange.create'
+        ];
     }
 }

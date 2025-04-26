@@ -9,6 +9,9 @@ use Livewire\Component;
 
 abstract class Form extends Component
 {
+    protected string $layout = 'components.layouts.app';
+    protected string $heading = '';
+    protected string $subheading = '';
     #[Locked]
     public string $model;
     public Model $record;
@@ -17,7 +20,10 @@ abstract class Form extends Component
     {
         return view('livewire.components.form', [
             'forms' => $this->forms(),
-        ]);
+        ])->layout($this->layout, [
+                    'heading' => $this->heading,
+                    'subheading' => $this->subheading,
+                ]);
     }
 
     public function getModel(): Model

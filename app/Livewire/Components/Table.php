@@ -15,8 +15,10 @@ abstract class Table extends Component
     use WithPagination;
     protected string $layout = 'components.layouts.app';
     protected int $perPage = 10;
+    protected string $heading = '';
+    protected string $subheading = '';
     #[Locked]
-    public string $model;
+    protected string $model;
     public string $sortBy = '';
     public string $sortDirection = 'asc';
     public string $search = '';
@@ -24,6 +26,7 @@ abstract class Table extends Component
     abstract protected function columns(): array;
     abstract protected function actions(): array;
     abstract protected function searchableColumns(): array;
+    abstract protected function pages(): array;
     public function render(): View
     {
         return view('livewire.components.table', [
@@ -31,7 +34,12 @@ abstract class Table extends Component
             'data' => $this->data(),
             'sortBy' => $this->sortBy,
             'sortDirection' => $this->sortDirection
-        ])->layout($this->layout, ['model' => $this->getModel()]);
+        ])->layout($this->layout, [
+                    'heading' => $this->heading,
+                    'subheading' => $this->subheading,
+                    'model' => $this->getModel(),
+                    'pages' => $this->pages()
+                ]);
     }
 
     public function data(): LengthAwarePaginator

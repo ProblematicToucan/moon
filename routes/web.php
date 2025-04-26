@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Admin\Exchange\ExchangeCreate;
 use App\Livewire\Admin\Exchange\ExchangeTable;
 use App\Livewire\Admin\User\UserTable;
 use App\Livewire\Settings\Appearance;
@@ -26,7 +27,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('user', UserTable::class)->name('admin.user.index');
 
         Route::get('exchange', ExchangeTable::class)->name('admin.exchange.index');
-        Route::view('exchange/create', 'components.admin.exchange.exchange-create')->name('admin.exchange.create');
+        Route::get('exchange/create', ExchangeCreate::class)->name('admin.exchange.create');
     });
 });
 

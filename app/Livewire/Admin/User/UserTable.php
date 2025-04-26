@@ -7,7 +7,9 @@ use App\Models\User;
 
 class UserTable extends Table
 {
-    protected string $layout = 'components.admin.exchange.exchange-list';
+    protected string $layout = 'components.admin.user.user';
+    protected string $heading = 'User';
+    protected string $subheading = 'Manage user application resources';
     public string $model = User::class;
     protected function query(): \Illuminate\Contracts\Database\Eloquent\Builder
     {
@@ -29,6 +31,11 @@ class UserTable extends Table
     }
 
     protected function actions(): array
+    {
+        return [];
+    }
+
+    protected function pages(): array
     {
         return [];
     }
