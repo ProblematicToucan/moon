@@ -4,7 +4,7 @@
     <section class="w-full">
         @include('partials.admin-heading')
 
-        <x-layouts.partial-admin :heading="__($heading)" :subheading="__($subheading)" :model="$model" :pages="$pages">
+        <x-layouts.partial-admin>
             {{ $slot }}
         </x-layouts.partial-admin>
     </section>

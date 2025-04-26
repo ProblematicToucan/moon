@@ -1,5 +1,5 @@
-@props(['navlist', 'heading', 'subheading', 'model' => null, 'maxWidth' => 'max-w-lg', 'pages' => null])
-
+@props(['maxWidth' => 'max-w-lg'])
+@aware(['navlist', 'heading', 'subheading', 'model', 'pages'])
 @php
     $canCreate = request()->routeIs('*.index') && !empty($pages['create']) && Gate::allows('create', $model);
     $canUpdate = request()->routeIs('*.edit') && !empty($pages['update']) && Gate::allows('update', $model);
