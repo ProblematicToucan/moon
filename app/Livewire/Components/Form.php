@@ -13,13 +13,21 @@ abstract class Form extends Component
     protected string $heading = '';
     protected string $subheading = '';
     #[Locked]
-    public string $model;
+    protected string $model = '';
+    #[Locked]
     public Model $record;
+    public string $action = 'create'; // Default action
     abstract protected function forms(): array;
+    abstract protected function actions(): array;
+    public function mount()
+    {
+        $this->action = request()->routeIs('*.create') ? 'create' : 'edit';
+    }
     public function render(): View
     {
         return view('livewire.components.form', [
             'forms' => $this->forms(),
+            'actions' => $this->actions(),
         ])->layout($this->layout, [
                     'heading' => $this->heading,
                     'subheading' => $this->subheading,
@@ -50,12 +58,19 @@ abstract class Form extends Component
         $this->dispatch('create');
     }
 
-    public function update(): void
+    public function edit(): void
     {
         $this->validate();
 
         $this->getModel()->update($this->all());
 
         $this->dispatch('update');
+    }
+
+    public function delete(): void
+    {
+        $this->getModel()->delete();
+
+        $this->dispatch('delete');
     }
 }

@@ -2,7 +2,6 @@
 @aware(['navlist', 'heading', 'subheading', 'model', 'pages'])
 @php
     $canCreate = request()->routeIs('*.index') && !empty($pages['create']) && Gate::allows('create', $model);
-    $canUpdate = request()->routeIs('*.edit') && !empty($pages['update']) && Gate::allows('update', $model);
 @endphp
 
 <div class="flex items-start max-md:flex-col">
@@ -17,17 +16,13 @@
     <div class="flex-1 self-stretch max-md:pt-6 overflow-x-auto pl-2">
         <div class="flex items-center justify-between gap-2 {{ $maxWidth }}">
             <div>
-                <flux:heading>{{ $heading }}</flux:heading>
-                <flux:subheading>{{ $subheading }}</flux:subheading>
+                <flux:heading>{{ __($heading) }}</flux:heading>
+                <flux:subheading>{{ __($subheading) }}</flux:subheading>
             </div>
 
             @if ($canCreate)
                 <flux:button wire:navigate :href="route($pages['create'])" variant="primary">
-                    Create
-                </flux:button>
-            @elseif ($canUpdate)
-                <flux:button wire:navigate :href="route($pages['update'])" variant="secondary">
-                    Update
+                    {{ __('Create') }}
                 </flux:button>
             @endif
         </div>

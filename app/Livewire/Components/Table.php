@@ -18,7 +18,7 @@ abstract class Table extends Component
     protected string $heading = '';
     protected string $subheading = '';
     #[Locked]
-    protected string $model;
+    protected string $model = '';
     public string $sortBy = '';
     public string $sortDirection = 'asc';
     public string $search = '';
@@ -61,6 +61,10 @@ abstract class Table extends Component
 
     public function getModel(): Model
     {
+        if (!class_exists($this->model)) {
+            throw new \Exception("Model {$this->model} not found");
+        }
+
         return new $this->model;
     }
 
