@@ -2,45 +2,14 @@
 
 namespace App\Forms\Components;
 
-class TextInput
+class TextInput extends FormComponent
 {
     protected string $component = 'form.text-input';
-    protected string $name;
-    protected array $options = [];
-    public function __construct(string $name)
-    {
-        $this->name = $name;
-        $this->options = [
-            'name' => $name,
-            'label' => ucwords(str_replace('_', ' ', __($name))),
-            'type' => 'text'
-        ];
-    }
 
-    public static function make(string $name): static
+    protected function initializeOptions(string $name): void
     {
-        return new static($name);
-    }
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function getComponent(): string
-    {
-        return $this->component;
-    }
-
-    public function getOptions(): array
-    {
-        return $this->options;
-    }
-
-    public function label(string $label): static
-    {
-        $this->options['label'] = __($label);
-        return $this;
+        parent::initializeOptions($name);
+        $this->options['type'] = 'text';
     }
 
     public function type(string $type): static
@@ -53,18 +22,6 @@ class TextInput
     {
         $this->options['type'] = 'file';
         $this->options['multiple'] = $multiple;
-        return $this;
-    }
-
-    public function description(string $description): static
-    {
-        $this->options['description'] = __($description);
-        return $this;
-    }
-
-    public function placeholder(string $placeholder): static
-    {
-        $this->options['placeholder'] = __($placeholder);
         return $this;
     }
 

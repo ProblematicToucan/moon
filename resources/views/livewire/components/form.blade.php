@@ -4,7 +4,7 @@
     @endforeach
     <div class="flex items-center gap-4">
         @foreach ($actions as $action)
-            <x-dynamic-component :component="$action->getComponent()" />
+            <x-dynamic-component :component="$action->getComponent()" :route="$route" />
         @endforeach
     </div>
 </form>

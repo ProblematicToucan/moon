@@ -1,3 +1,3 @@
 <flux:button type="submit" variant="primary">
-    {{ __('Create') }}
+    {{ __('Edit') }}
 </flux:button>

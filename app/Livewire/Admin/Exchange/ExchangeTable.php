@@ -7,6 +7,7 @@ use App\Models\Exchange;
 
 class ExchangeTable extends Table
 {
+    protected const ROUTE = 'admin.exchange';
     protected string $layout = 'components.admin.exchange.exchange';
     protected string $heading = 'Exchange';
     protected string $subheading = 'Manage exchange application resources';

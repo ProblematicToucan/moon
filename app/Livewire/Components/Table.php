@@ -13,6 +13,7 @@ use Livewire\WithPagination;
 abstract class Table extends Component
 {
     use WithPagination;
+    protected const ROUTE = ''; // Should be overridden in subclasses
     protected string $layout = 'components.layouts.app';
     protected int $perPage = 10;
     protected string $heading = '';
@@ -27,6 +28,15 @@ abstract class Table extends Component
     abstract protected function actions(): array;
     abstract protected function searchableColumns(): array;
     abstract protected function pages(): array;
+
+    public static function route(): string
+    {
+        if (static::ROUTE === '') {
+            throw new \LogicException('ROUTE constant must be defined in subclass of Form.');
+        }
+
+        return static::ROUTE;
+    }
     public function render(): View
     {
         return view('livewire.components.table', [
